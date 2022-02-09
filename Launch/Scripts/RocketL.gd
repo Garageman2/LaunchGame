@@ -5,6 +5,8 @@ extends Sprite
 var RocketPos = Vector2(0,0)
 onready var LaunchRoot = get_parent();
 export var Radius = 300
+var HasLaunched = false
+signal Launched
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,9 +17,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	RocketPos = get_global_mouse_position();
-	RocketPos = RocketPos - LaunchRoot.get("position")
-	set("position",FindPosition(RocketPos))
+	if !HasLaunched:
+		RocketPos = get_global_mouse_position();
+		RocketPos = RocketPos - LaunchRoot.get("position")
+		set("position",FindPosition(RocketPos))
+		if Input.is_action_pressed("Launch"):
+			HasLaunched = false;
+			emit_signal("Launched")
 	return
 
 

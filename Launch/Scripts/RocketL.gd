@@ -37,7 +37,7 @@ func FindPosition(RocketPos):
 	NewCoords.y = clamp(NewCoords.y,-1.5,-.2)
 	Spring.set("rotation_degrees",rad2deg(NewCoords.y)+90)
 	set("rotation_degrees",rad2deg(NewCoords.y)+90)
-	Spring.set("scale",Vector2(.3,NewCoords.x*.003))
+	Spring.set("scale",Vector2(.3,NewCoords.x*.0015))
 	
 	NewCoords = polar2cartesian(NewCoords.x,NewCoords.y)
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Moon.png" type="Texture" id=1]
+
+[node name="Moon" type="Sprite"]
+position = Vector2( 3067.75, -1740.25 )
+scale = Vector2( 1.17773, 1.17773 )
+texture = ExtResource( 1 )

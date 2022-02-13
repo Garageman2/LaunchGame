@@ -11,6 +11,11 @@ func _ready():
 	Cam.make_current()
 	pass
 
+
+func _input(event):
+	if event.is_action_pressed("Quit"):
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+
 func OnLaunch(Force,Position):
 	$Launcher.queue_free();
 	add_child(LaunchRocket);

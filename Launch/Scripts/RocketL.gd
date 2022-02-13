@@ -13,7 +13,7 @@ signal Launched(Force, WorldPos)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LaunchRoot.set("position",Vector2(0,get_viewport_rect().size.y))
+	LaunchRoot.set("position",Vector2(-200,666))
 	print(Spring)
 	pass # Replace with function body.
 

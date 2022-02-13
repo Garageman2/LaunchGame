@@ -28,12 +28,14 @@ func _physics_process(delta):
 		set("position",get("position") + (Velocity))
 		set("rotation_degrees", rad2deg(cartesian2polar(Velocity.x,Velocity.y).y)+90)
 		Velocity.y -= delta*Acceleration
-		print(Velocity.y)
+		
+		Cam.limit_bottom = 750
+		
 		if Velocity.y > 0:
 			Emitting = false
 			Fire.set("emitting",Emitting)
 			Smoke.set("emitting",Emitting)
-		if get("position").y >  get_viewport_rect().size.y - 40:
+		if get("position").y >  666:
 			InFlight = false
 	pass
 

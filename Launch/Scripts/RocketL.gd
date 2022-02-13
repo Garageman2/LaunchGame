@@ -8,7 +8,7 @@ var RocketPos = Vector2(0,0)
 onready var LaunchRoot = get_parent();
 export var Radius = 300
 var HasLaunched = false
-signal Launched
+signal Launched(Force, WorldPos)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +26,7 @@ func _process(delta):
 		set("position",FindPosition(RocketPos))
 		if Input.is_action_pressed("Launch"):
 			HasLaunched = false;
-			emit_signal("Launched")
+			emit_signal("Launched", get("position"), global_position)
 	return
 
 

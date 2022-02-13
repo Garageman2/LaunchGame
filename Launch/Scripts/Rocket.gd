@@ -10,6 +10,7 @@ onready var Fire = $Sprite/FireParticles
 onready var Smoke = $Sprite/Smoke
 onready var Cam = $Camera2D
 onready var MyTween = $Tween
+onready var Flag = $Flag
 
 func PhysicsSetup(ForcePolar, OldCam):
 	Velocity = polar2cartesian(.5*SpringConst*(450-ForcePolar.x)*(1/Mass) * 6,ForcePolar.y)
@@ -37,5 +38,16 @@ func _physics_process(delta):
 			Smoke.set("emitting",Emitting)
 		if get("position").y >  666:
 			InFlight = false
+	pass
+	
+func Success():
+	print("AHedm")
+	InFlight = false
+	MyTween.interpolate_property(Flag,"position",Vector2(0,0),Vector2(-42,0),.5,MyTween.TRANS_EXPO,Tween.EASE_IN_OUT)
+	MyTween.start()
+	Emitting = false
+	Fire.set("emitting",Emitting)
+	Smoke.set("emitting",Emitting)
+	Flag.set("playing", true)
 	pass
 

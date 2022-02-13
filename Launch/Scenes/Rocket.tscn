@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Rocket.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rocket.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Flame.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Smoke.png" type="Texture" id=4]
+[ext_resource path="res://Assets/FlagFrames.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 96.6667
@@ -58,3 +59,9 @@ scale_amount_random = 0.39
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Flag" type="AnimatedSprite" parent="."]
+rotation = -1.5708
+scale = Vector2( 0.359375, 0.359375 )
+z_index = -1
+frames = ExtResource( 5 )

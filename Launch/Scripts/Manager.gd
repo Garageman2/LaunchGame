@@ -6,6 +6,7 @@ onready var LaunchRocketClass = preload("res://Scenes/Rocket.tscn")
 onready var LaunchRocket = LaunchRocketClass.instance();
 onready var Cam = $Camera2D
 onready var Moon = $Moon
+onready var HitTimer = $MoonEndTimer
 
 func MakeConnections():
 	print(Rocket)
@@ -55,5 +56,10 @@ func RocketReset():
 
 func MoonHit():
 	LaunchRocket.Success()
-	RocketReset()
+	HitTimer.start()
 	pass
+
+
+func _on_Timer_timeout():
+	RocketReset()
+	pass # Replace with function body.

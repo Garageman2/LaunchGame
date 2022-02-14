@@ -9,8 +9,12 @@ var Emitting = true
 onready var Fire = $Sprite/FireParticles
 onready var Smoke = $Sprite/Smoke
 onready var Cam = $Camera2D
-onready var MyTween = $Tween
+onready var MyTween = $CamTween
+onready var BoostTween = $BoostTween
 onready var Flag = $Flag
+var HasBoosted = false
+var Boosting = false
+
 
 func PhysicsSetup(ForcePolar, OldCam):
 	Velocity = polar2cartesian(.5*SpringConst*(450-ForcePolar.x)*(1/Mass) * 6,ForcePolar.y)
@@ -21,9 +25,12 @@ func PhysicsSetup(ForcePolar, OldCam):
 	MyTween.start()
 	pass
 
-func PhysicsMove():
-	pass
-	
+func _input(event):
+	if event.is_action_pressed("Boost") and !HasBoosted:
+		HasBoosted = true
+		Boost()
+
+
 func _physics_process(delta):
 	if InFlight:
 		set("position",get("position") + (Velocity))
@@ -32,7 +39,7 @@ func _physics_process(delta):
 		
 		Cam.limit_bottom = 750
 		
-		if Velocity.y > 0:
+		if Velocity.y > 0 && !Boosting:
 			Emitting = false
 			Fire.set("emitting",Emitting)
 			Smoke.set("emitting",Emitting)
@@ -49,4 +56,28 @@ func Success():
 	Smoke.set("emitting",Emitting)
 	Flag.set("playing", true)
 	pass
+
+func Boost():
+	BoostTween.interpolate_property(self,"Acceleration",-9.81,.5,BoostTween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	BoostTween.start()
+	Fire.set("amount",150)
+	Fire.set("scale_amount",.2)
+	Fire.set("initial_velocity",1.5)
+	Boosting = true
+	Fire.set("emitting",true)
+	Smoke.set("emitting",true)
+	$Timer.start()
+	pass
+
+
+
+
+
+func _on_Timer_timeout():
+		BoostTween.interpolate_property(self,"Acceleration",0.5,-9.81,BoostTween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		BoostTween.start()
+		Fire.set("amount",100)
+		Fire.set("scale_amount",.11)
+		Fire.set("initial_velocity",.93)
+		Boosting = false
 

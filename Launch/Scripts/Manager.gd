@@ -9,12 +9,15 @@ onready var Moon = $Moon
 onready var HitTimer = $MoonEndTimer
 var Lives = 3
 onready var UI = $CanvasLayer/Interface
+onready var Arrow = $CanvasLayer/ArrowControl
 
 func MakeConnections():
 	Rocket.connect("Launched",self,"OnLaunch")
 	Cam.make_current()
 	Moon.connect("MoonHit",self,"MoonHit")
 	LaunchRocket.connect("Crash",self,"RocketCrash")
+	Arrow.UpdateMoon(Moon)
+	Arrow.Rocket = Rocket.get_parent()
 	pass
 
 func _ready():
@@ -28,6 +31,7 @@ func _input(event):
 
 func OnLaunch(Force,Position):
 	Rocket.disconnect("Launched",self,"OnLaunch")
+	Arrow.Rocket = LaunchRocket
 	$Launcher.queue_free();
 	add_child(LaunchRocket);
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Launcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Moon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/DirtSet.tres" type="TileSet" id=6]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/ArrowControl.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Environment" id=1]
 glow_enabled = true
@@ -107,5 +108,11 @@ environment = SubResource( 1 )
 [node name="Interface" parent="Manager/CanvasLayer" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
+
+[node name="ArrowControl" parent="Manager/CanvasLayer" instance=ExtResource( 8 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = 0.0
 
 [connection signal="timeout" from="Manager/MoonEndTimer" to="Manager" method="_on_Timer_timeout"]

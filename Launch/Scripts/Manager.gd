@@ -7,12 +7,14 @@ onready var LaunchRocket = LaunchRocketClass.instance();
 onready var Cam = $Camera2D
 onready var Moon = $Moon
 onready var HitTimer = $MoonEndTimer
+var Lives = 3
+onready var UI = $CanvasLayer/Interface
 
 func MakeConnections():
-	print(Rocket)
 	Rocket.connect("Launched",self,"OnLaunch")
 	Cam.make_current()
 	Moon.connect("MoonHit",self,"MoonHit")
+	LaunchRocket.connect("Crash",self,"RocketCrash")
 	pass
 
 func _ready():
@@ -25,9 +27,10 @@ func _input(event):
 		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 func OnLaunch(Force,Position):
-	print("Launching Happy")
+	Rocket.disconnect("Launched",self,"OnLaunch")
 	$Launcher.queue_free();
 	add_child(LaunchRocket);
+
 	
 	var ForcePolar = cartesian2polar(Force.x,Force.y)
 	
@@ -39,10 +42,9 @@ func OnLaunch(Force,Position):
 	pass
 	
 	
-func ResetGame():
-	pass
-	
 func RocketReset():
+	Moon.disconnect("MoonHit",self,"MoonHit")
+	LaunchRocket.disconnect("Crash",self,"RocketCrash")
 	LaunchRocket.queue_free()
 	Rocket = RocketClass.instance()
 	Rocket.set_name("Launcher")
@@ -50,16 +52,31 @@ func RocketReset():
 	Rocket = Rocket.get_child(0).get_child(0)
 	Cam.set("position",Vector2(512,0))
 	Cam.make_current()
-	MakeConnections()
 	LaunchRocket = LaunchRocketClass.instance()
+	MakeConnections()
+	pass
+
+
+
+func RocketCrash():
+	Lives -= 1
+	HitTimer.start()
 	pass
 
 func MoonHit():
+	UI.UpdateScore(LaunchRocket.Time)
 	LaunchRocket.Success()
 	HitTimer.start()
 	pass
 
 
 func _on_Timer_timeout():
-	RocketReset()
+	UI.UpdateLives(Lives)
+	if Lives > 0:
+		RocketReset()
+	else: 
+		GameEnd()
 	pass # Replace with function body.
+
+func GameEnd():
+	pass

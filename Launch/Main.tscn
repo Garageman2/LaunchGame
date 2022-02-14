@@ -102,9 +102,9 @@ offset = Vector2( 62, -231 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Manager/Environment"]
 environment = SubResource( 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="Manager"]
 
-[node name="Interface" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="Interface" parent="Manager/CanvasLayer" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 

@@ -14,11 +14,15 @@ onready var BoostTween = $BoostTween
 onready var Flag = $Flag
 var HasBoosted = false
 var Boosting = false
+onready var CounterTimer = $Counter
+var Time = 0
+signal Crash
 
 
 func PhysicsSetup(ForcePolar, OldCam):
 	Velocity = polar2cartesian(.5*SpringConst*(450-ForcePolar.x)*(1/Mass) * 6,ForcePolar.y)
 	InFlight = true
+	CounterTimer.start()
 	Cam.set_global_position(OldCam.get("position"))
 	Cam.make_current()
 	MyTween.interpolate_property(Cam,"position",Cam.get("position"),Vector2(0,0),3,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
@@ -45,6 +49,9 @@ func _physics_process(delta):
 			Smoke.set("emitting",Emitting)
 		if get("position").y >  666:
 			InFlight = false
+			CounterTimer.stop()
+			print("Giga Crash")
+			emit_signal("Crash")
 	pass
 	
 func Success():
@@ -55,6 +62,7 @@ func Success():
 	Fire.set("emitting",Emitting)
 	Smoke.set("emitting",Emitting)
 	Flag.set("playing", true)
+	CounterTimer.stop()
 	pass
 
 func Boost():
@@ -81,3 +89,7 @@ func _on_Timer_timeout():
 		Fire.set("initial_velocity",.93)
 		Boosting = false
 
+
+
+func _on_Counter_timeout():
+	Time+=1

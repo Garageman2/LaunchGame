@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Launcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/DirtSet.tres" type="TileSet" id=6]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/ArrowControl.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/GameEnd.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
 glow_enabled = true
@@ -45,8 +46,8 @@ one_shot = true
 motion_scale = Vector2( 0.1, 1 )
 
 [node name="Background" type="Sprite" parent="Manager/Environment/ParallaxBackground/NoScroll"]
-position = Vector2( 1851.5, -3460 )
-scale = Vector2( 5.3276, 9.99504 )
+position = Vector2( 1851.5, -5234 )
+scale = Vector2( 5.3276, 12.995 )
 z_index = -2
 texture = ExtResource( 3 )
 
@@ -114,5 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -6.10352e-05
 margin_bottom = 0.0
+
+[node name="GameEnd" parent="Manager/CanvasLayer" instance=ExtResource( 9 )]
 
 [connection signal="timeout" from="Manager/MoonEndTimer" to="Manager" method="_on_Timer_timeout"]

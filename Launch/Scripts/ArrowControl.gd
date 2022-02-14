@@ -28,10 +28,9 @@ func _on_Timer_timeout():
 		NewPos = Vector2.ZERO
 		NewPos.x = clamp(Dist.x,64,ViewSize.x-64)
 		NewPos.y = clamp(Dist.y,64,ViewSize.y-128)
-		MyTween.interpolate_property(Arrow,"rect_rotation",Arrow.get("rect_rotation"),rad2deg(Theta)+90,.2,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
-		PosTween.interpolate_property(self,"rect_position",get("rect_position"),NewPos,.2,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		MyTween.interpolate_property(Arrow,"rect_rotation",Arrow.get("rect_rotation"),rad2deg(Theta)+90,.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		PosTween.interpolate_property(self,"rect_position",get("rect_position"),NewPos,.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		MyTween.start()
 		PosTween.start()
 		set("rect_position", NewPos)
-		print(rad2deg(Theta))
 	pass # Replace with function body.

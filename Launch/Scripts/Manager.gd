@@ -10,6 +10,7 @@ onready var HitTimer = $MoonEndTimer
 var Lives = 3
 onready var UI = $CanvasLayer/Interface
 onready var Arrow = $CanvasLayer/ArrowControl
+var InGame = true
 
 func MakeConnections():
 	Rocket.connect("Launched",self,"OnLaunch")
@@ -83,4 +84,5 @@ func _on_Timer_timeout():
 	pass # Replace with function body.
 
 func GameEnd():
+	InGame = false
 	pass

@@ -11,10 +11,14 @@ var HasLaunched = false
 signal Launched(Force, WorldPos)
 
 
+func Setup():
+	LaunchRoot.set("position",Vector2(-200,666))
+	HasLaunched = false
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LaunchRoot.set("position",Vector2(-200,666))
-	print(Spring)
+	Setup()
 	pass # Replace with function body.
 
 
@@ -25,7 +29,8 @@ func _process(delta):
 		RocketPos = RocketPos - LaunchRoot.get("position")
 		set("position",FindPosition(RocketPos))
 		if Input.is_action_pressed("Launch"):
-			HasLaunched = false;
+			print("Launch lanuch!")
+			HasLaunched = true;
 			emit_signal("Launched", get("position"), global_position)
 	return
 

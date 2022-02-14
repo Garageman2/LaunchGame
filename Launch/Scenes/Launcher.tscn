@@ -19,5 +19,4 @@ scale = Vector2( 0.197, 0.215 )
 
 [node name="Spring" type="Sprite" parent="LaunchRoot/SpringManager"]
 position = Vector2( 0, -256 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )

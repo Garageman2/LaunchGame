@@ -41,7 +41,6 @@ func _physics_process(delta):
 	pass
 	
 func Success():
-	print("AHedm")
 	InFlight = false
 	MyTween.interpolate_property(Flag,"position",Vector2(0,0),Vector2(-42,0),.5,MyTween.TRANS_EXPO,Tween.EASE_IN_OUT)
 	MyTween.start()

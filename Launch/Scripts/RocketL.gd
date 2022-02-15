@@ -2,6 +2,7 @@ extends Sprite
 
 onready var Parent = get_parent();
 onready var Spring = Parent.get_child(1)
+var CanLaunch = false
 
 # Declare member variables here. Examples:
 var RocketPos = Vector2(0,0)
@@ -24,12 +25,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !HasLaunched:
+	if !HasLaunched && CanLaunch:
 		RocketPos = get_global_mouse_position();
 		RocketPos = RocketPos - LaunchRoot.get("position")
 		set("position",FindPosition(RocketPos))
 		if Input.is_action_pressed("Launch"):
-			print("Launch lanuch!")
 			HasLaunched = true;
 			emit_signal("Launched", get("position"), global_position)
 	return

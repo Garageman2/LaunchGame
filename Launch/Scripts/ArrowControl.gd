@@ -26,7 +26,7 @@ func _on_Timer_timeout():
 		Pol = cartesian2polar(Dist.x,Dist.y)
 		Theta = Pol.y
 		NewPos = Vector2.ZERO
-		NewPos.x = clamp(Dist.x,64,ViewSize.x-64)
+		NewPos.x = clamp(Dist.x,64,(ViewSize.x))
 		NewPos.y = clamp(Dist.y,64,ViewSize.y-128)
 		MyTween.interpolate_property(Arrow,"rect_rotation",Arrow.get("rect_rotation"),rad2deg(Theta)+90,.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		PosTween.interpolate_property(self,"rect_position",get("rect_position"),NewPos,.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)

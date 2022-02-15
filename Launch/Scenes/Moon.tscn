@@ -7,7 +7,6 @@
 radius = 124.377
 
 [node name="Moon" type="Sprite"]
-position = Vector2( 3067.75, -1740.25 )
 scale = Vector2( 1.17773, 1.17773 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

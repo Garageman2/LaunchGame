@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Rocket.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Rocket.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Flame.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Smoke.png" type="Texture" id=4]
+[ext_resource path="res://Assets/FlagFrames.tres" type="SpriteFrames" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 96.6667
+height = 326.667
+
+[node name="RocketRoot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+shape = SubResource( 1 )
+
+[node name="FireParticles" type="CPUParticles2D" parent="Sprite"]
+modulate = Color( 10.22, 1.61, 2, 1 )
+position = Vector2( 0, 243.333 )
+z_index = -1
+amount = 100
+lifetime = 1.92
+explosiveness = 0.34
+randomness = 0.48
+lifetime_randomness = 0.59
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 50, 1 )
+initial_velocity = 0.93
+angle = 437.5
+angle_random = 1.0
+scale_amount = 0.11
+scale_amount_random = 0.21
+color = Color( 1, 0.558225, 0.502882, 1 )
+hue_variation = 0.16
+hue_variation_random = 0.39
+
+[node name="Smoke" type="CPUParticles2D" parent="Sprite"]
+position = Vector2( 0, 243.333 )
+z_index = -1
+amount = 7
+lifetime = 2.24
+randomness = 0.19
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 42.363, 1 )
+angular_velocity = 3.66
+angular_velocity_random = 0.52
+angle = 12.8
+angle_random = 0.9
+scale_amount_random = 0.39
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CamTween" type="Tween" parent="."]
+
+[node name="BoostTween" type="Tween" parent="."]
+
+[node name="Flag" type="AnimatedSprite" parent="."]
+rotation = -1.5708
+scale = Vector2( 0.359375, 0.359375 )
+z_index = -1
+frames = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Counter" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Counter" to="." method="_on_Counter_timeout"]

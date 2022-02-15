@@ -117,5 +117,7 @@ margin_right = -6.10352e-05
 margin_bottom = 0.0
 
 [node name="GameEnd" parent="Manager/CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+rect_scale = Vector2( 2.5, 2.5 )
 
 [connection signal="timeout" from="Manager/MoonEndTimer" to="Manager" method="_on_Timer_timeout"]

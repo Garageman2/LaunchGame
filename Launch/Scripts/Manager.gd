@@ -10,7 +10,10 @@ onready var HitTimer = $MoonEndTimer
 var Lives = 3
 onready var UI = $CanvasLayer/Interface
 onready var Arrow = $CanvasLayer/ArrowControl
+onready var EndScreen = $CanvasLayer/GameEnd
 var InGame = true
+var HighScore = 0
+var ScoreFile = "user://score.save"
 
 func MakeConnections():
 	Rocket.connect("Launched",self,"OnLaunch")
@@ -19,9 +22,26 @@ func MakeConnections():
 	LaunchRocket.connect("Crash",self,"RocketCrash")
 	Arrow.UpdateMoon(Moon)
 	Arrow.Rocket = Rocket.get_parent()
+	LoadScore()
 	pass
 
+func SaveScore():
+	var file = File.new()
+	file.open(ScoreFile, File.WRITE)
+	file.store_var(HighScore)
+	file.close()
+	pass
+
+func LoadScore():
+	var file = File.new()
+	if file.file_exists(ScoreFile):
+		file.open(ScoreFile,File.READ)
+		HighScore = file.get_var()
+		file.close()
+	pass
+	
 func _ready():
+	LoadScore()
 	MakeConnections()
 	pass
 
@@ -85,4 +105,15 @@ func _on_Timer_timeout():
 
 func GameEnd():
 	InGame = false
+	print(UI.Score.text)
+	if int(UI.Score.text) > HighScore:
+		HighScore = int(UI.Score.text)
+		SaveScore()
+	EndScreen.UpdateScores(UI.Score.text,HighScore)
+	EndScreen.set("visible",true)
+	EndScreen.connect("ResetGame",self,"GameReset")
+	pass
+	
+func GameReset():
+	get_tree().reload_current_scene()
 	pass

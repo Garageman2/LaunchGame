@@ -137,6 +137,7 @@ func _on_Timer_timeout():
 	if Lives > 0:
 		RocketReset()
 		Moon.MoonRand()
+		Arrow.UpdateMoon(Moon)
 		Arrow.set("visible",true)
 		CanPan = true
 	else: 

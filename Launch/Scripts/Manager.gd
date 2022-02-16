@@ -77,7 +77,7 @@ func _input(event):
 		Arrow.set("visible",false)
 		CanPan = false
 		CanLaunch = true
-		CamTween.interpolate_property(Cam,"position",Cam.get("position"),Vector2(512,0),.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		CamTween.interpolate_property(Cam,"position",Cam.get("position"),Vector2(512,256),.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 		CamTween.start()
 		Rocket.CanLaunch = CanLaunch
 

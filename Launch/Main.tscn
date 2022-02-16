@@ -198,39 +198,46 @@ position = Vector2( 3567, 438 )
 texture = ExtResource( 11 )
 
 [node name="Tree2" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 3790, 402 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1, 1.28 )
 texture = ExtResource( 11 )
+offset = Vector2( 833, -35.1563 )
 
 [node name="Tree3" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 3669, 417 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1, 1.28 )
 texture = ExtResource( 11 )
+offset = Vector2( 712, -23.4375 )
 
 [node name="Tree4" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 3458, 406 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1, 1.28 )
 texture = ExtResource( 11 )
+offset = Vector2( 501, -32.0313 )
 
 [node name="Tree8" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 2954, 432 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1, 1.28 )
 texture = ExtResource( 11 )
+offset = Vector2( -3, -11.7188 )
 
 [node name="Tree9" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 3069, 394 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1.39243, 1.78231 )
 texture = ExtResource( 11 )
+offset = Vector2( 80.4348, -29.7367 )
 
 [node name="Tree11" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 3316, 432 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 0.96222, 1.23164 )
 texture = ExtResource( 11 )
+offset = Vector2( 373.095, -12.1789 )
 
 [node name="Tree10" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
-position = Vector2( 2863, 459 )
+position = Vector2( 1281, 447 )
 scale = Vector2( 1, 1.28 )
 texture = ExtResource( 11 )
+offset = Vector2( -94, 9.375 )
 
 [node name="Tree18" type="Sprite" parent="Manager/Environment/ParallaxBackground/Trees"]
 position = Vector2( 7726, 402 )

@@ -43,5 +43,8 @@ margin_bottom = 103.0
 rect_scale = Vector2( 0.375217, 0.375217 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="TextureRect/TextureButton" to="." method="_on_TextureButton_pressed"]

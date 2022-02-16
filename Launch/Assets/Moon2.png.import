@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EndBig.png-f665aeb6143dac7870005fa5d34bcedb.stex"
+path="res://.import/Moon2.png-f3ac79b780de8d74ee77404770b54604.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/EndBig.png"
-dest_files=[ "res://.import/EndBig.png-f665aeb6143dac7870005fa5d34bcedb.stex" ]
+source_file="res://Assets/Moon2.png"
+dest_files=[ "res://.import/Moon2.png-f3ac79b780de8d74ee77404770b54604.stex" ]
 
 [params]
 
@@ -24,7 +24,7 @@ flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false

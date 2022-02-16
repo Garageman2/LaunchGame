@@ -114,7 +114,7 @@ func RocketReset():
 
 func _physics_process(delta):
 	if CanPan:
-		var NewPos = Cam.get("position")+(PanVec*300)
+		var NewPos = Cam.get("position")+(PanVec*75)
 		NewPos.x = clamp(NewPos.x,Cam.limit_left,Cam.limit_right)
 		NewPos.y = clamp(NewPos.y,Cam.limit_top,Cam.limit_bottom)
 		Cam.set("position",NewPos)

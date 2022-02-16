@@ -162,6 +162,30 @@ position = Vector2( 5746.6, 556.604 )
 scale = Vector2( 0.848467, 0.848467 )
 texture = ExtResource( 12 )
 
+[node name="House8" type="Sprite" parent="Manager/Environment/ParallaxBackground/DistantMoving"]
+position = Vector2( 7226.6, 556.604 )
+scale = Vector2( 0.848467, 0.848467 )
+texture = ExtResource( 12 )
+
+[node name="House9" type="Sprite" parent="Manager/Environment/ParallaxBackground/DistantMoving"]
+position = Vector2( 7867.6, 556.604 )
+scale = Vector2( 0.848467, 0.848467 )
+texture = ExtResource( 12 )
+
+[node name="House10" type="Sprite" parent="Manager/Environment/ParallaxBackground/DistantMoving"]
+position = Vector2( 9765, 537 )
+texture = ExtResource( 12 )
+
+[node name="House11" type="Sprite" parent="Manager/Environment/ParallaxBackground/DistantMoving"]
+position = Vector2( 7670.6, 549 )
+scale = Vector2( 0.971998, 0.971998 )
+texture = ExtResource( 12 )
+
+[node name="House12" type="Sprite" parent="Manager/Environment/ParallaxBackground/DistantMoving"]
+position = Vector2( 8943.6, 556.604 )
+scale = Vector2( 0.848467, 0.848467 )
+texture = ExtResource( 12 )
+
 [node name="Clouds" parent="Manager/Environment/ParallaxBackground/DistantMoving" instance=ExtResource( 14 )]
 
 [node name="Trees" type="ParallaxLayer" parent="Manager/Environment/ParallaxBackground"]

@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Moon.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 124.377
+radius = 109.585
 
 [node name="Moon" type="Sprite"]
 scale = Vector2( 1.17773, 1.17773 )
